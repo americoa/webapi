@@ -16,8 +16,10 @@ namespace LabAspWebApi
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{id}/{data}",
+                defaults: new { id = RouteParameter.Optional, 
+                                data = RouteParameter.Optional 
+                              }
             );
         }
     }

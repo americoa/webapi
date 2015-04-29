@@ -10,22 +10,22 @@ namespace LabAspWebApi.Controllers
     public class ClientController : ApiController
     {
         [HttpPost]//POST - CREATE               
-        public HttpResponseMessage Criar(ViewModel.MVClient postclient)
+        public HttpResponseMessage Criar(ViewModel.MVClient data)
         {
             try
             {
                 using (var cn = new DataModel.ClientControlEntities())
                 {
                     DataModel.Client dbclient = new DataModel.Client();
-                    dbclient.FirstName = postclient.FirstName;
-                    dbclient.LastName = postclient.LastName;
-                    dbclient.DateBirth = postclient.DateBirth;
-                    dbclient.State = postclient.State;
-                    dbclient.City = postclient.City;
-                    dbclient.Zip = postclient.Zip;
-                    dbclient.Country = postclient.Country;
-                    dbclient.Phone = postclient.Phone;
-                    dbclient.Email = postclient.Email;
+                    dbclient.FirstName = data.FirstName;
+                    dbclient.LastName = data.LastName;
+                    dbclient.DateBirth = data.DateBirth;
+                    dbclient.State = data.State;
+                    dbclient.City = data.City;
+                    dbclient.Zip = data.Zip;
+                    dbclient.Country = data.Country;
+                    dbclient.Phone = data.Phone;
+                    dbclient.Email = data.Email;
 
                     cn.Client.Add(dbclient);
                     cn.SaveChanges();
@@ -66,24 +66,24 @@ namespace LabAspWebApi.Controllers
         }
 
         [HttpPut]//PUT - UPDATE
-        public HttpResponseMessage Atualizar(ViewModel.MVClient putclient)
+        public HttpResponseMessage Atualizar(ViewModel.MVClient data)
         {
             try
             {
                 using (var cn = new DataModel.ClientControlEntities())
                 {
 
-                    DataModel.Client dbclient = cn.Client.Where(x => x.ClientID.Equals(putclient.ClientID)).Single();
+                    DataModel.Client dbclient = cn.Client.Where(x => x.ClientID.Equals(data.ClientID)).Single();
 
-                    dbclient.FirstName = putclient.FirstName;
-                    dbclient.LastName = putclient.LastName;
-                    dbclient.DateBirth = putclient.DateBirth;
-                    dbclient.State = putclient.State;
-                    dbclient.City = putclient.City;
-                    dbclient.Zip = putclient.Zip;
-                    dbclient.Country = putclient.Country;
-                    dbclient.Phone = putclient.Phone;
-                    dbclient.Email = putclient.Email;
+                    dbclient.FirstName = data.FirstName;
+                    dbclient.LastName = data.LastName;
+                    dbclient.DateBirth = data.DateBirth;
+                    dbclient.State = data.State;
+                    dbclient.City = data.City;
+                    dbclient.Zip = data.Zip;
+                    dbclient.Country = data.Country;
+                    dbclient.Phone = data.Phone;
+                    dbclient.Email = data.Email;
 
                     cn.SaveChanges();
                 }
@@ -96,14 +96,14 @@ namespace LabAspWebApi.Controllers
         }
 
         [HttpDelete]//DELETE-DELETE         
-        public HttpResponseMessage Deletar(ViewModel.MVClient delclient)
+        public HttpResponseMessage Deletar(ViewModel.MVClient data)
         {
             try
             {
                 using (var cn = new DataModel.ClientControlEntities())
                 {
 
-                    DataModel.Client dbclient = cn.Client.Where(x => x.ClientID.Equals(delclient.ClientID)).Single();
+                    DataModel.Client dbclient = cn.Client.Where(x => x.ClientID.Equals(data.ClientID)).Single();
                     cn.Client.Remove(dbclient);
                     cn.SaveChanges();
                 }
